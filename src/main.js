@@ -16,6 +16,8 @@ export default function main() {
 
   const functional = solution3("45312---4321 52 2 512 54");
   console.log(functional);
+  const regex = solution2("45312---4321 52 2 512 54");
+  console.log(regex);
 }
 
 const solution = (phone) => {
@@ -33,6 +35,13 @@ const solution = (phone) => {
   return ret;
 };
 
+const solution2 = (phone) => {
+  return phone
+    .replace(/[ -]/g, "")
+    .split(/([\d]{3})/g)
+    .filter((elem) => elem !== "")
+    .join("-");
+};
 function redu(ret, elem, index, array) {
   if (!isNaN(parseInt(elem, 10))) {
     if ((ret.length + 1) % 4 === 0) return ret + "-" + elem;
